@@ -1,6 +1,7 @@
-name: Deploy All
+name: Deploy Upload Worker
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -9,17 +10,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        worker:
-          - ingestion-worker
-          - movie-api-worker
-          - auth-worker
-          - recommendation-worker
-
     defaults:
       run:
-        working-directory: apps/${{ matrix.worker }}
+        working-directory: apps/ingestion-worker
 
     steps:
       - name: Checkout
@@ -29,13 +22,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: apps/${{ matrix.worker }}/package-lock.json
+
+      - name: Check environment
+        run: |
+          node --version
+          npm --version
+          pwd
+          ls -la
 
       - name: Install dependencies
         run: npm ci
+        timeout-minutes: 10
 
-      - name: Deploy Worker
+      - name: Deploy
         run: npx wrangler deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
