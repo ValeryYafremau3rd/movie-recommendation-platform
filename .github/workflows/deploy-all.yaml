@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         worker:
-          - upload-worker
+          - ingestion-worker
           - movie-api-worker
           - auth-worker
           - recommendation-worker
