@@ -1,0 +1,7 @@
+strategy:
+  matrix:
+    worker:
+      - ingestion-worker
+      - movie-api-worker
+      - auth-worker
+      - recommendation-worker
