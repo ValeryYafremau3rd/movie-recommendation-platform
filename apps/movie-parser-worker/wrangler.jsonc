@@ -1,0 +1,50 @@
+{
+	"name": "movie-parser-worker",
+	"main": "src/index.js",
+	"compatibility_date": "2026-07-02",
+	"observability": {
+		"enabled": true,
+	},
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "WIKIPEDIA_GATEWAY",
+				"class_name": "WikipediaGateway",
+			},
+		],
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": ["WikipediaGateway"],
+		},
+	],
+	"queues": {
+		"consumers": [
+			{
+				"queue": "movie-page-queue",
+				"max_batch_size": 1,
+				"max_concurrency": 1,
+				"max_retries": 1,
+			},
+		],
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "movies-db",
+			"database_id": "99034253-870c-4863-9b4b-51f0b367ffa2",
+			"remote": true,
+		},
+	],
+	"vectorize": [
+		{
+			"binding": "MOVIES_INDEX",
+			"index_name": "movies-index-384-v2",
+			"remote": true,
+		},
+	],
+	"ai": {
+		"binding": "AI",
+	},
+}

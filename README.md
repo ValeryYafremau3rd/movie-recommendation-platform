@@ -2,6 +2,8 @@
 
 Cloudflare-based movie recommendation platform.
 
+APP https://frontend-olive-chi-zx55pgiidl.vercel.app/
+
 ## Applications
 
 - ingestion-worker

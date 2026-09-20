@@ -1,0 +1,3 @@
+-- Migration number: 0007 	 2026-08-24T05:04:54.932Z
+ALTER TABLE movie_awards
+ADD COLUMN result INTEGER NOT NULL DEFAULT 0;

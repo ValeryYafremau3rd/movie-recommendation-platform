@@ -1,0 +1,21 @@
+{
+	"name": "movie-api-worker",
+	"main": "src/index.js",
+	"compatibility_date": "2026-07-02",
+
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "movies-db",
+			"database_id": "99034253-870c-4863-9b4b-51f0b367ffa2",
+			"remote": true,
+		},
+	],
+	"kv_namespaces": [
+		{
+			"binding": "AWARDED_MOVIES_CACHE",
+			"id": "544075eebea941acbd8bb9b2239b056b",
+			"remote": true,
+		},
+	],
+}

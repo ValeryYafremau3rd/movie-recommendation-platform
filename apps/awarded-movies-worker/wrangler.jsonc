@@ -1,0 +1,28 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "awarded-movies-worker",
+	"main": "src/index.js",
+	"compatibility_date": "2026-08-25",
+	"observability": {
+		"enabled": true,
+	},
+	"upload_source_maps": true,
+	"triggers": {
+		"crons": ["* * * * *"],
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "movies-db",
+			"database_id": "99034253-870c-4863-9b4b-51f0b367ffa2",
+			"remote": true,
+		},
+	],
+	"kv_namespaces": [
+		{
+			"binding": "AWARDED_MOVIES_CACHE",
+			"id": "544075eebea941acbd8bb9b2239b056b",
+			"remote": true,
+		},
+	],
+}

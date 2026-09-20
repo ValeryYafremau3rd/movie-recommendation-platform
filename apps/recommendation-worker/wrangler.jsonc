@@ -1,0 +1,41 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "movie-recommendation-worker",
+	"main": "src/index.js",
+	"compatibility_date": "2026-07-02",
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "movies-db",
+			"database_id": "99034253-870c-4863-9b4b-51f0b367ffa2",
+			"remote": true,
+		},
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "RECOMMENDATION_SESSION",
+				"class_name": "RecommendationQueue",
+			},
+		],
+	},
+
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": ["RecommendationQueue"],
+		},
+	],
+	"vectorize": [
+		{
+			"binding": "MOVIES_INDEX",
+			"index_name": "movies-index-384-v2",
+			"remote": true,
+		},
+	],
+
+	"ai": {
+		"binding": "AI",
+		"remote": true,
+	},
+}

@@ -1,0 +1,17 @@
+{
+	"name": "movie-vector-worker",
+	"main": "src/index.js",
+	"compatibility_date": "2026-07-02",
+
+	"ai": {
+		"binding": "AI",
+	},
+
+	"vectorize": [
+		{
+			"binding": "MOVIES_INDEX",
+			"index_name": "movies-index-384-v2",
+			"remote": true,
+		},
+	],
+}
